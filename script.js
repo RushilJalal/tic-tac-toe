@@ -139,16 +139,18 @@ const DOMControllerModule = (() => {
                 const row = square.getAttribute('row');
                 const col = square.getAttribute('col');
                 console.log(`(${row}, ${col}) was clicked!`);
+                gameFlowControllerModule.handleCellClick(row, col);
             });
         });
     }
 
     return {
-        handleSquareClick,
+        handleSquareClick
     }
 })();
 
 DOMControllerModule.handleSquareClick();
+
 
 
 
