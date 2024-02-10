@@ -15,7 +15,6 @@ const ticTacToeModule = (() => {
                 else {
                     console.log(`${currentCell} is already placed on (${row}, ${col})`);
                     return false;
-
                 }
             },
             resetBoard: () => board.forEach(row => row.fill(''))
@@ -68,9 +67,9 @@ const gameFlowControllerModule = (() => {
         }
         console.log(ticTacToeModule.GameBoard.showBoard());
     }
+
     const checkForWinner = () => {
         const board = ticTacToeModule.GameBoard.showBoard();
-
         //check for horizontal win
         for (let i = 0; i < board.length; i++) {
             if (checkRow(i))
@@ -131,6 +130,26 @@ const gameFlowControllerModule = (() => {
         }
     }
 })();
+
+const DOMControllerModule = (() => {
+    const handleSquareClick = () => {
+        const squares = document.querySelectorAll('.square');
+        squares.forEach((square) => {
+            square.addEventListener('click', () => {
+                const row = square.getAttribute('row');
+                const col = square.getAttribute('col');
+                console.log(`(${row}, ${col}) was clicked!`);
+            });
+        });
+    }
+
+    return {
+        handleSquareClick,
+    }
+})();
+
+DOMControllerModule.handleSquareClick();
+
 
 
 
