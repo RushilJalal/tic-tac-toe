@@ -41,8 +41,11 @@ const gameFlowControllerModule = (() => {
     }
 
     const handleCellClick = (row, col) => {
+        const win = document.querySelector('.win-message');
+        const message = document.querySelector('.chance-message');
         if (!gameActive) {
             console.log("Game over!");
+            message.textContent = 'Game over!';
             return;
         }
 
@@ -50,15 +53,18 @@ const gameFlowControllerModule = (() => {
 
         if (marked) {
             console.log(`${currentPlayer.name} marked cell(${row}, ${col}) with ${currentPlayer.symbol}`);
+            message.textContent = `${currentPlayer.name} marked cell(${row}, ${col}) with ${currentPlayer.symbol}`;
             ticTacToeModule.GameBoard.showBoard();
 
             if (checkForWinner()) {
                 console.log(`${currentPlayer.name} wins!!`);
+                win.textContent = `${currentPlayer.name} wins!!`;
                 gameActive = false;
             }
 
             else if (isBoardFull()) {
                 console.log('Board is full. Its a tie!');
+                win.textContent = 'Board is full. Its a tie!';
                 gameActive = false;
             }
 
@@ -120,7 +126,6 @@ const gameFlowControllerModule = (() => {
         return (board[0][2] !== '' && board[0][2] === board[1][1] && board[1][1] === board[2][0]);
     }
 
-
     return {
         handleCellClick,
         resetGame: () => {
@@ -133,7 +138,7 @@ const gameFlowControllerModule = (() => {
 })();
 
 const DOMControllerModule = (() => {
-
+    //renderer
     const updateBoardDisplay = () => {
         const board = ticTacToeModule.GameBoard.showBoard();
         const squares = document.querySelectorAll('.square');
