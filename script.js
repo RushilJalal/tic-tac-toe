@@ -23,8 +23,8 @@ const ticTacToeModule = (() => {
 
     const createPlayer = (name, symbol) => ({ name, symbol })
 
-    const P1 = createPlayer('rushil', 'X');
-    const P2 = createPlayer('arhaan', 'O');
+    const P1 = createPlayer('P1', 'X');
+    const P2 = createPlayer('P2', 'O');
 
     const GameBoard = createGameBoard();
 
@@ -52,8 +52,8 @@ const gameFlowControllerModule = (() => {
         const marked = ticTacToeModule.GameBoard.markCell(row, col, currentPlayer);
 
         if (marked) {
-            console.log(`${currentPlayer.name} marked cell(${row}, ${col}) with ${currentPlayer.symbol}`);
-            message.textContent = `${currentPlayer.name} marked cell(${row}, ${col}) with ${currentPlayer.symbol}`;
+            console.log(`${currentPlayer.name} marked cell (${row}, ${col}) with ${currentPlayer.symbol}`);
+            message.textContent = `${currentPlayer.name} marked cell (${row}, ${col}) with ${currentPlayer.symbol}`;
             ticTacToeModule.GameBoard.showBoard();
 
             if (checkForWinner()) {
@@ -138,7 +138,7 @@ const gameFlowControllerModule = (() => {
 })();
 
 const DOMControllerModule = (() => {
-    //renderer
+    //UI renderer
     const updateBoardDisplay = () => {
         const board = ticTacToeModule.GameBoard.showBoard();
         const squares = document.querySelectorAll('.square');
