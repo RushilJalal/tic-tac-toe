@@ -68,6 +68,18 @@ const gameFlowControllerModule = (() => {
         console.log(ticTacToeModule.GameBoard.showBoard());
     }
 
+    const isBoardFull = () => {
+        const board = ticTacToeModule.GameBoard.showBoard();
+
+        for (const row of board) {
+            for (const cell of row) {
+                if (cell === '')
+                    return false;
+            }
+        }
+        return true;
+    }
+
     const checkForWinner = () => {
         const board = ticTacToeModule.GameBoard.showBoard();
         //check for horizontal win
@@ -87,17 +99,6 @@ const gameFlowControllerModule = (() => {
             return true;
     }
 
-    const isBoardFull = () => {
-        const board = ticTacToeModule.GameBoard.showBoard();
-
-        for (const row of board) {
-            for (const cell of row) {
-                if (cell === '')
-                    return false;
-            }
-        }
-        return true;
-    }
 
     const checkRow = (row) => {
         const board = ticTacToeModule.GameBoard.showBoard();
@@ -132,21 +133,34 @@ const gameFlowControllerModule = (() => {
 })();
 
 const DOMControllerModule = (() => {
+
+    const updateBoardDisplay = () => {
+        const board = ticTacToeModule.GameBoard.showBoard();
+        const squares = document.querySelectorAll('.square');
+
+        squares.forEach((square, index) => {
+            const row = Math.floor(index / 3);
+            const col = index % 3;
+            square.textContent = board[row][col];
+        });
+    }
+
     const handleSquareClick = () => {
         const squares = document.querySelectorAll('.square');
         squares.forEach((square) => {
             square.addEventListener('click', () => {
                 const row = square.getAttribute('row');
                 const col = square.getAttribute('col');
-                console.log(`(${row}, ${col}) was clicked!`);
                 gameFlowControllerModule.handleCellClick(row, col);
+                updateBoardDisplay();
             });
         });
     }
 
     return {
-        handleSquareClick
-    }
+        handleSquareClick,
+        updateBoardDisplay
+    };
 })();
 
 DOMControllerModule.handleSquareClick();
