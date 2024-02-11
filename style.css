@@ -1,27 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(104, 104, 224);
 }
 
-
-.square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 35px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 60px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
+h1 {
+    font-size: 3em;
     text-align: center;
-    width: 60px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgb(0, 0, 0);
 }
 
 .board {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    background-color: rgb(239, 235, 235);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.532);
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    font-size: 3em;
+    text-align: center;
+    line-height: 100px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 2px solid #333333;
+    color: #333333;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.square:hover {
+    background-color: #dddddd;
+}
+
+.win-message {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0de667;
 }
