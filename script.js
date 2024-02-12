@@ -138,6 +138,7 @@ const gameFlowControllerModule = (() => {
     }
 })();
 
+
 const DOMControllerModule = (() => {
     const win = document.querySelector('.win-message');
     const message = document.querySelector('.chance-message');
