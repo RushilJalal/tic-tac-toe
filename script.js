@@ -133,11 +133,15 @@ const gameFlowControllerModule = (() => {
             gameActive = true;
             currentPlayer = ticTacToeModule.P1;
             console.log("Game restarts. Its P1's chance!");
+            DOMControllerModule.updateBoardDisplay();
         }
     }
 })();
 
 const DOMControllerModule = (() => {
+    const win = document.querySelector('.win-message');
+    const message = document.querySelector('.chance-message');
+
     //UI renderer
     const updateBoardDisplay = () => {
         const board = ticTacToeModule.GameBoard.showBoard();
@@ -161,6 +165,13 @@ const DOMControllerModule = (() => {
             });
         });
     }
+
+    const resetButton = document.querySelector('#resetButton');
+    resetButton.addEventListener('click', () => {
+        gameFlowControllerModule.resetGame();
+        win.textContent = '';
+        message.textContent = '';
+    })
 
     return {
         handleSquareClick,
