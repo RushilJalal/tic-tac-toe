@@ -58,3 +58,25 @@ h1 {
     align-items: center;
     gap: 5px;
 }
+
+#resetButton {
+    padding: 15px;
+    font: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    position: fixed;
+    bottom: 30px;
+    background-color: white;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 2px 3px #181818;
+}
+
+#resetButton:hover {
+    background-color: #dddddd;
+}
+
+#resetButton:active {
+    box-shadow: 0 3px #00000075;
+    transform: translateY(4px);
+}
