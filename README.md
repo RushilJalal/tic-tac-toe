@@ -11,8 +11,7 @@ Project Link: [https://github.com/RushilJalal/tic-tac-toe](https://github.com/Ru
 - Simple and intuitive UI
 - Responsive design
 - Two-player mode
-- Game state tracking
-- Replay functionality
+
 
 ## Getting Started
 
@@ -46,8 +45,8 @@ Project Link: [https://github.com/RushilJalal/tic-tac-toe](https://github.com/Ru
 
 ## Project Structure
 
-- `public/` - Contains static assets and the main HTML file
-- `src/` - Contains JavaScript modules and CSS files
+- `public/` - Contains static assets
+- `src/` - Contains JavaScript modules
 
 ## Contributing
 
